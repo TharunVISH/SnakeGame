@@ -2,18 +2,16 @@
 import {GenerateApple} from './GameMode'
 import  {EndGame} from './EndGame'
 
-
-
-
+let move_complete_flag='completed';
 
 function NavButtons(){
     return(
         <div className='NavContainer'>
-            <button onClick={()=>move("up","manuel")} className="btn btn-dark btn-lg">↑</button>
+            <button onClick={()=>move("up","manuel")} className="btn btn-secondary btn-lg">↑</button>
             <br></br>
-            <button  onClick={()=>move("left","manuel")} className="btn btn-dark btn-lg">←</button>
-            <button  onClick={()=>move("down","manuel")} className="btn btn-dark btn-lg">↓</button>
-            <button  onClick={()=>move("right","manuel")} className="btn btn-dark btn-lg">→</button>
+            <button  onClick={()=>move("left","manuel")} className="btn btn-secondary btn-lg">←</button>
+            <button  onClick={()=>move("down","manuel")} className="btn btn-secondary btn-lg">↓</button>
+            <button  onClick={()=>move("right","manuel")} className="btn btn-secondary btn-lg">→</button>
            
         </div>
 
@@ -22,13 +20,14 @@ function NavButtons(){
 
 function move(dirc,input_mode){
         if (window.pause_status!=='On'){
-        
+        //alert('hi')
         //Prevent from moving backward
         if((((window.cur_dirc==="up") && (dirc==="down")))||(((window.cur_dirc==="down") && (dirc==="up")))||(((window.cur_dirc==="left") && (dirc==="right"))) || (((window.cur_dirc==="right") && (dirc==="left")))){
         
             return false;
 
         }
+        
 
         //Move the snake
         if ((((input_mode==="manuel") && (window.auto==="off"))) || (((input_mode==="auto") && (window.auto==="on")))){
@@ -92,6 +91,7 @@ function move(dirc,input_mode){
 
             document.getElementById(window.cur_act_id).className="active_box";
             window.all_act_ids.unshift(window.cur_act_id);
+           
 
             
             //Update Score
@@ -102,19 +102,27 @@ function move(dirc,input_mode){
               
                 document.getElementById("score").innerHTML=window.score.toString().padStart(3, "0")
                 //Increse snake speed
-                if (window.smake_speed>200){
-                    AddSpped();
+                if (window.snake_speed>200){
+                    AddSpeed();
                 }
             }
+            move_complete_flag='completed';
+            
         }
-        //Update direction
-        window.cur_dirc=dirc;
+        
+        //Update direction. Check the previous move completed 
+        if((move_complete_flag==='completed')&&(input_mode==="manuel")){ 
+            window.cur_dirc=dirc;
+            move_complete_flag='in_progress';
+        
+        }
+        
     }
 }
-function AddSpped(){
-    window.smake_speed-=50;
+function AddSpeed(){
+    window.snake_speed-=25;
     clearInterval(window.var_Auto);
-    window.var_Auto =setInterval(function(){  move(window.cur_dirc,"auto") },window.smake_speed);
+    window.var_Auto =setInterval(function(){  move(window.cur_dirc,"auto") },window.snake_speed);
     
 }
 

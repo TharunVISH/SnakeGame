@@ -15,7 +15,7 @@ window.cl_pos=10;
 window.pause_status='On'
 window.all_act_ids=["id09_10"];
 window.apple_eated='no';
-window.smake_speed=500;
+window.snake_speed=500;
 window.grid_order=20;
 window.obstacle_pattern=[];
 

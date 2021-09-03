@@ -9,7 +9,7 @@ var time_difference;
 function BtnGameCtrl(){
      return(
          <div>
-             <button type="button" class="btn btn-outline-dark" id="btn_game" onClick={()=> Game()}>New Game</button>
+             <button type="button" class="btn btn-success" id="btn_game" onClick={()=> Game()}>New Game</button>
          </div>
         
      );
@@ -26,7 +26,7 @@ function BtnGameCtrl(){
         //View Apple
         var_AppleColor='Red';
         GenerateApple();
-        window.var_Blink =setInterval(function(){  Blink_Apple() }, 175);
+        window.var_Blink =setInterval(function(){  Blink_Apple() }, 400);
         document.getElementById("btn_Stop").disabled = false;
         document.getElementById("btn_Auto").disabled = false;
         document.getElementById("Ob_pattern").disabled = true;
@@ -65,7 +65,7 @@ function BtnGameCtrl(){
         document.getElementById("btn_Auto").disabled = false;
 
         //Resume apple
-        window.var_Blink =setInterval(function(){  Blink_Apple() }, 175);
+        window.var_Blink =setInterval(function(){  Blink_Apple() }, 400);
         
 
         // Resume Timer
@@ -77,7 +77,7 @@ function BtnGameCtrl(){
         document.getElementById('game_alert').className="alert_class_hidden";
         if (window.auto==="on"){
         
-        window.var_Auto =setInterval(function(){  move(window.cur_dirc,"auto") },window.smake_speed);
+        window.var_Auto =setInterval(function(){  move(window.cur_dirc,"auto") },window.snake_speed);
     
         }
     }
@@ -100,10 +100,10 @@ function Reset(){
     window.score=0;
     document.getElementById("score").innerHTML="000";
     
-    for (var id of window.all_act_ids){
+    for (let id of window.all_act_ids){
         document.getElementById(id).className="box";
     }
-    for (var id of window.obstacle_pattern){
+    for (let id of window.obstacle_pattern){
         document.getElementById(id).className="obstacle_box";
     }
   
@@ -118,7 +118,7 @@ function Reset(){
     window.pause_status='Off'
     document.getElementById('game_alert').innerHTML="";
     document.getElementById('game_alert').className="alert_class_hidden";
-    window.smake_speed=500;
+    window.snake_speed=500;
     previous_time_difference=0;
 
 }

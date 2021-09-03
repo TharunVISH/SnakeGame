@@ -6,12 +6,12 @@ function Obstacle(){
     return (
         <div>
             <br></br>
-            <label for="Ob_pattern">Choose an Obstacle Pattern</label>
-            <select id="Ob_pattern" className="btn btn-outline-dark dropdown-toggle" onChange={()=>ChangeObstacle(document.getElementById("Ob_pattern").value)}>
-                <option className="btn btn-outline-dark dropdown-toggle" value="None">--None--</option>
-                <option className="btn-outline-dark" value="Pattern1">Pattern 1</option>
-                <option className="btn-outline-dark" value="Pattern2">Pattern 2</option>
-                <option className="btn-outline-dark" value="Pattern3">Pattern 3</option>
+            <label for="Ob_pattern" className="Obstacle_lbl">Choose an Obstacle Pattern</label>
+            <select id="Ob_pattern" className="btn btn-outline-info btn-rounded waves-effect" onChange={()=>ChangeObstacle(document.getElementById("Ob_pattern").value)}>
+                <option className="btn btn-outline-secondary btn-rounded waves-effect" value="None">--None--</option>
+                <option className="btn-outline-secondary" value="Pattern1">Pattern 1</option>
+                <option className="btn-outline-secondary" value="Pattern2">Pattern 2</option>
+                <option className="btn-outline-secondary" value="Pattern3">Pattern 3</option>
             </select>
          </div>
     );
@@ -22,10 +22,10 @@ function ChangeObstacle(pattern){
     document.getElementById('game_alert').className="alert_class_hidden";
     document.getElementById("score").innerHTML="000";
     document.getElementById("timer").innerHTML=("00:00");
-    for (var id of window.all_act_ids){
+    for (let id of window.all_act_ids){
         document.getElementById(id).className="box";
     }
-    for (var id of window.obstacle_pattern){
+    for (let id of window.obstacle_pattern){
         document.getElementById(id).className="box";
     }
     ///////////////////////////////////
@@ -44,7 +44,7 @@ function ChangeObstacle(pattern){
             window.obstacle_pattern=[];
     }
     
-    for (var id of window.obstacle_pattern){
+    for (let id of window.obstacle_pattern){
         document.getElementById(id).className="obstacle_box";
     }
 }
