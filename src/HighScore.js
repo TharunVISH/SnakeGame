@@ -24,7 +24,7 @@
 
         score_rows=[];
         let rank=1;
-        if (window.high_score.length==0){
+        if (window.high_score.length===0){
             score_rows.push(<tr><td colspan={3}>No records to show. Create New !!!</td></tr>);
         }
 
