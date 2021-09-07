@@ -22,7 +22,7 @@ function App() {
     <br></br>
       <table id='container'>
         <tr>
-          <h1>Eat The Apple<span><img id="logo" src={logo} /></span></h1>
+          <h1>Eat The Apple<span><img id="logo" src={logo} alt="Apple Image" /></span></h1>
         </tr>
         <tr>
           <td id="col1">              
