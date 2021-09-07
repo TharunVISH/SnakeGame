@@ -12,6 +12,7 @@ import logo from './apple.gif';
 import BtnStop from './EndGame';
 import GameStatus from './Game_Status'
 import Obstacle from './SelectObstacle'
+import HighScore from './HighScore';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
               <Auto/><BtnStop/>
               
               <Obstacle/>
+              <HighScore/>
             
           </td>
         </tr>

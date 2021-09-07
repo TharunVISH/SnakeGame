@@ -102,7 +102,7 @@ function move(dirc,input_mode){
               
                 document.getElementById("score").innerHTML=window.score.toString().padStart(3, "0")
                 //Increse snake speed
-                if (window.snake_speed>200){
+                if (window.snake_movement_interval>200){
                     AddSpeed();
                 }
             }
@@ -120,11 +120,12 @@ function move(dirc,input_mode){
     }
 }
 function AddSpeed(){
-    window.snake_speed-=25;
+    window.snake_movement_interval-=25;
     clearInterval(window.var_Auto);
-    window.var_Auto =setInterval(function(){  move(window.cur_dirc,"auto") },window.snake_speed);
+    window.var_Auto =setInterval(function(){  move(window.cur_dirc,"auto") },window.snake_movement_interval);
     
 }
+
 
 export default NavButtons;
 export {move};

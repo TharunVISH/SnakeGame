@@ -8,10 +8,10 @@ function Obstacle(){
             <br></br>
             <label for="Ob_pattern" className="Obstacle_lbl">Choose an Obstacle Pattern</label>
             <select id="Ob_pattern" className="btn btn-outline-info btn-rounded waves-effect" onChange={()=>ChangeObstacle(document.getElementById("Ob_pattern").value)}>
-                <option className="btn btn-outline-secondary btn-rounded waves-effect" value="None">--None--</option>
-                <option className="btn-outline-secondary" value="Pattern1">Pattern 1</option>
-                <option className="btn-outline-secondary" value="Pattern2">Pattern 2</option>
-                <option className="btn-outline-secondary" value="Pattern3">Pattern 3</option>
+                <option value="None">--None--</option>
+                <option value="Pattern1">Pattern 1</option>
+                <option value="Pattern2">Pattern 2</option>
+                <option value="Pattern3">Pattern 3</option>
             </select>
          </div>
     );

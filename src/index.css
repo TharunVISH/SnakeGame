@@ -120,7 +120,7 @@ h1{
   margin: 3px;
 
 }
-#btn_game,#Ob_pattern{
+#btn_game,#Ob_pattern,#btn_View_score{
   width: 215px;
   height: 40px;
   margin: 3px;
@@ -163,9 +163,6 @@ h1{
   transition: opacity 2s;
   color: rgb(255, 247, 230);
 }
-/*#Ob_pattern{
-  width: 60px;
-  height: 60px;
-  margin: 7px;
-
-}*/
+.score_table{
+ width: 100%;
+}

@@ -27,7 +27,7 @@ function GoAuto(el){
         el.innerHTML="Go Manuel";
         window.auto="on";
         
-        window.var_Auto =setInterval(function(){  move(window.cur_dirc,"auto") }, window.snake_speed);
+        window.var_Auto =setInterval(function(){  move(window.cur_dirc,"auto") }, window.snake_movement_interval);
     }
 }
 function GoManuel(el){

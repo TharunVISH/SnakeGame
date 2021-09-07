@@ -30,6 +30,7 @@ function BtnGameCtrl(){
         document.getElementById("btn_Stop").disabled = false;
         document.getElementById("btn_Auto").disabled = false;
         document.getElementById("Ob_pattern").disabled = true;
+        document.getElementById("btn_View_score").disabled = true;
         GoAuto(el);
 
         //Start Timer
@@ -77,7 +78,7 @@ function BtnGameCtrl(){
         document.getElementById('game_alert').className="alert_class_hidden";
         if (window.auto==="on"){
         
-        window.var_Auto =setInterval(function(){  move(window.cur_dirc,"auto") },window.snake_speed);
+        window.var_Auto =setInterval(function(){  move(window.cur_dirc,"auto") },window.snake_movement_interval);
     
         }
     }
@@ -118,7 +119,7 @@ function Reset(){
     window.pause_status='Off'
     document.getElementById('game_alert').innerHTML="";
     document.getElementById('game_alert').className="alert_class_hidden";
-    window.snake_speed=500;
+    window.snake_movement_interval=500;
     previous_time_difference=0;
 
 }
