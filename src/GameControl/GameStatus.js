@@ -2,7 +2,7 @@
 function GameStatus(){
 
     return(
-    <div id ='game_alert' className='alert_class'>
+    <div id ='game_status' className='game_status'>
         
     </div>
 

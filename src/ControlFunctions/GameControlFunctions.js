@@ -1,21 +1,13 @@
-
-import {GoAuto} from './Auto';
-import {move} from './NavigationButtons'
+import {move} from './SnakeMovementFunctions'
+import {GoAuto} from './SetGameModeFuntions'
+import  {SetGameStatusPaused,HideGameStatus} from './SetGameStatusFunctions'
+import {ResetDisplays,ResetVariables} from './ResetAll'
 
 var var_AppleColor;
 var previous_time_difference=0;
 var time_difference;
 
-function BtnGameCtrl(){
-     return(
-         <div>
-             <button type="button" class="btn btn-success" id="btn_game" onClick={()=> Game()}>New Game</button>
-         </div>
-        
-     );
- }
-
- function Game(){
+function NewPauseResumeGame(){
     let game_action =document.getElementById("btn_game").innerHTML;
     let el=document.getElementById("btn_Auto");
     //New Game
@@ -42,7 +34,7 @@ function BtnGameCtrl(){
     else if (game_action==="| |"){
         document.getElementById("btn_game").innerHTML="| ▶";
 
-        //Pause apple
+        //Pause apple blink
         clearInterval(window.var_Blink);
         if (document.getElementById(window.apple_id).className!=="active_box"){
         document.getElementById(window.apple_id).className="apple_box";
@@ -56,8 +48,7 @@ function BtnGameCtrl(){
         clearInterval(window.var_Auto);
         document.getElementById("btn_Auto").disabled = true;
         window.pause_status='On'
-        document.getElementById('game_alert').innerHTML="PAUSED";
-        document.getElementById('game_alert').className="alert_class_show";
+        SetGameStatusPaused();
     }
     //Resume
     else{
@@ -65,7 +56,7 @@ function BtnGameCtrl(){
         document.getElementById("btn_game").innerHTML="| |";
         document.getElementById("btn_Auto").disabled = false;
 
-        //Resume apple
+        //Resume apple blink
         window.var_Blink =setInterval(function(){  Blink_Apple() }, 400);
         
 
@@ -74,11 +65,10 @@ function BtnGameCtrl(){
         window.var_Timer=setInterval(function() {Timer()});
 
         // Resume Auto
-        document.getElementById('game_alert').innerHTML="";
-        document.getElementById('game_alert').className="alert_class_hidden";
-        if (window.auto==="on"){
+        HideGameStatus();
+        if (window.auto_mode==="on"){
         
-        window.var_Auto =setInterval(function(){  move(window.cur_dirc,"auto") },window.snake_movement_interval);
+        window.var_Auto =setInterval(function(){  move(window.current_snake_direction,"auto") },window.snake_movement_interval);
     
         }
     }
@@ -90,7 +80,7 @@ function GenerateApple(){
     let cl_index=Math.floor(Math.random() * 16) + 1;
     window.apple_id='id'+("0" + rw_index).slice(-2)+'_'+("0" +cl_index).slice(-2);
 
-    if (window.all_act_ids.includes(window.apple_id)||(window.obstacle_pattern.includes(window.apple_id))){
+    if (window.current_tail_ids.includes(window.apple_id)||(window.obstacle_pattern.includes(window.apple_id))){
         GenerateApple();
     }
     document.getElementById(window.apple_id).className="apple_box";
@@ -98,28 +88,12 @@ function GenerateApple(){
 }
 
 function Reset(){
-    window.score=0;
-    document.getElementById("score").innerHTML="000";
-    
-    for (let id of window.all_act_ids){
-        document.getElementById(id).className="box";
-    }
+    ResetDisplays()
     for (let id of window.obstacle_pattern){
         document.getElementById(id).className="obstacle_box";
     }
-  
 
-    document.getElementById("id09_10").className="active_box";
-    window.cur_act_id="id09_10";
-    window.rw_pos=9;
-    window.cl_pos=10;
-    window.cur_dirc ="right";
-    window.apple_eated='no';
-    window.all_act_ids=["id09_10"];
-    window.pause_status='Off'
-    document.getElementById('game_alert').innerHTML="";
-    document.getElementById('game_alert').className="alert_class_hidden";
-    window.snake_movement_interval=500;
+    ResetVariables();
     previous_time_difference=0;
 
 }
@@ -145,5 +119,4 @@ function Timer(){
     document.getElementById("timer").innerHTML=("0" + minutes).slice(-2)+ ":" +  ("0" + seconds).slice(-2);
 }
 
- export default BtnGameCtrl;
- export {GenerateApple};
+ export {GenerateApple,NewPauseResumeGame};

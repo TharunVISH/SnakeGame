@@ -1,12 +1,8 @@
-import { GoManuel } from "./Auto";
+//End the Game on Button press or Game Over
 
-function BtnStop(){
-    return(
-        <span>
-        <button type="button" class="btn btn-outline-danger"  id="btn_Stop" onClick={()=> EndGame()} >■</button>
-        </span>
-    )
-}
+import { GoManuel } from './SetGameModeFuntions'
+import  {HideGameStatus} from './SetGameStatusFunctions'
+
 function EndGame(){
     UpdateHighScore();
 
@@ -29,8 +25,7 @@ function EndGame(){
         document.getElementById("btn_Auto").disabled = true;
         document.getElementById("btn_Stop").disabled = true;
         if (window.pause_status==='On'){
-        document.getElementById('game_alert').innerHTML="";
-        document.getElementById('game_alert').className="alert_class_hidden";}
+        HideGameStatus();}
         window.pause_status='On'
         
 }
@@ -41,16 +36,16 @@ function UpdateHighScore(){
         time:document.getElementById("timer").innerHTML
     }
     
-   if (window.high_score.length===0){
+   if (window.score_cards.length===0){
 
-        window.high_score=[cur_score_card];
+        window.score_cards=[cur_score_card];
        
     }
     else{
-        for (let score_card of window.high_score){
+        for (let score_card of window.score_cards){
 
             if (score_card.score<=window.score){
-                window.high_score.splice(index, 0, cur_score_card);
+                window.score_cards.splice(index, 0, cur_score_card);
                 break;
             }
             else{
@@ -59,5 +54,4 @@ function UpdateHighScore(){
     }
 }
 }
-export default BtnStop;
 export {EndGame};

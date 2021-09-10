@@ -1,8 +1,11 @@
  import Popup from './ScorePopup';
  import {useState} from 'react'
  import Button from 'react-bootstrap/Button';
+
  let score_rows=[];
-    function HighScore(){
+
+
+    function ButtonViewScore(){
         const [popup_status,setPopup_status]=useState(false);
         
     
@@ -24,12 +27,12 @@
 
         score_rows=[];
         let rank=1;
-        if (window.high_score.length===0){
+        if (window.score_cards.length===0){
             score_rows.push(<tr><td colspan={3}>No records to show. Create New !!!</td></tr>);
         }
 
         else{
-        for (let score_card of window.high_score){
+        for (let score_card of window.score_cards){
             
             score_rows.push(<tr>{rank}<td>{score_card.score}</td>{score_card.time}</tr>);
             rank++
@@ -39,4 +42,4 @@
 
     }
     
-    export default HighScore;
+    export default ButtonViewScore;

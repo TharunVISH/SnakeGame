@@ -1,7 +1,7 @@
 
 import Alert from 'react-bootstrap/Alert';
 
-function ScoreBoard(){
+function ScoreTimerBoard(){
     return(
         <Alert variant="success" id ='score_bord'>
             <h1 className='ScoreHead'>#SCORE</h1>
@@ -13,4 +13,4 @@ function ScoreBoard(){
     );
 
 }
-export default ScoreBoard;
+export default ScoreTimerBoard;

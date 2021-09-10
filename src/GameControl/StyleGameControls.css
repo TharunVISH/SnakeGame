@@ -1,0 +1,65 @@
+
+#container_control_btns{
+    max-height: 590px;
+    width: 260px;
+    text-align: center;
+}
+
+#btn_Auto{
+    width: 105px;
+    height: 40px;
+    margin: 3px;
+    font-size: auto;
+
+}
+#btn_Stop{
+    width: 105px;
+    height: 40px;
+    margin: 3px;
+
+}
+
+
+#btn_game,#Ob_pattern{
+    width: 215px;
+    height: 40px;
+    margin: 3px;
+  }
+
+.Obstacle_lbl{
+    color: rgb(81, 221, 240);
+}       
+
+.game_status_hidden{
+
+    opacity: 0;
+  
+  }
+  .game_status_show{
+    font-family: "Lucida Console", "Courier New", monospace;
+    width: 500px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 30px;
+    font-weight: bolder;
+    font-size: 40px;
+    opacity:100;
+    transition: opacity 2s;
+    color: rgb(255, 247, 230);
+  }
+  
+.btn-secondary{
+ 
+    width: 60px;
+    height: 60px;
+    margin: 7px;
+  }
+
+.NavContainer{
+    text-align: center;
+    margin-top: -5px;
+}
